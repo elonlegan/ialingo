@@ -45,8 +45,8 @@ export default function Chat({
 					{messages.map((message) => (
 						<div
 							key={message.id}
+							className='mb-2'
 							style={{
-								marginBottom: '10px',
 								textAlign:
 									message.role === 'user'
 										? 'right'
@@ -55,15 +55,11 @@ export default function Chat({
 						>
 							<ClickToCopy value={message.content}>
 								<div
-									style={{
-										display: 'inline-block',
-										padding: '10px',
-										borderRadius: '8px',
-										backgroundColor:
-											message.role === 'user'
-												? '#93c5fd'
-												: '#e5e7eb',
-									}}
+									className={`inline-block p-2 rounded-lg  ${
+										message.role === 'user'
+											? 'bg-blue-300 dark:bg-blue-700'
+											: 'bg-gray-200 dark:bg-gray-600'
+									}`}
 								>
 									{message.content}
 								</div>
