@@ -12,7 +12,12 @@ import { useState } from 'react';
 import ClickToCopy from '@/components/clickToCopy/clickToCopy';
 
 export default function Chat() {
-	const [messages, setMessages] = useState([]);
+	const [messages, setMessages] = useState<
+		{
+			text: string;
+			sender: 'user' | 'ai';
+		}[]
+	>([]);
 	const [newMessage, setNewMessage] = useState('');
 
 	const handleSendMessage = () => {
