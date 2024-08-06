@@ -5,8 +5,15 @@ import {
 	TooltipTrigger,
 } from '@/components/ui/tooltip';
 import { useToast } from '@/components/ui/use-toast';
+import React, { ReactNode } from 'react';
 
-export default function ClickToCopy({ children, value }) {
+export default function ClickToCopy({
+	children,
+	value,
+}: {
+	children?: ReactNode;
+	value: string;
+}) {
 	const { toast } = useToast();
 
 	const handleCopy = () => {
