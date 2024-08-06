@@ -40,31 +40,3 @@ export async function getAiResponse(prompt: string) {
 		throw new Error();
 	}
 }
-
-// export async function getAiResponse(prompt: string) {
-// 	console.log(prompt);
-
-// 	try {
-// 		const query = {
-// 			model: 'llama-3-sonar-large-32k-chat',
-// 			stream: true,
-// 			messages: buildPrompt(prompt),
-// 			max_tokens: 1000,
-// 			temperature: 0.75,
-// 			frequency_penalty: 1,
-// 		} as const;
-
-// 		const response =
-// 			await perplexity.chat.completions.create(query);
-
-// 		const stream = OpenAIStream(response);
-
-// 		const streamingResponse = new StreamingTextResponse(
-// 			stream
-// 		);
-// 		return await streamingResponse.text();
-// 	} catch (error: unknown) {
-// 		console.log(error);
-// 		throw new Error();
-// 	}
-// }

@@ -5,6 +5,7 @@ import {
 	CardHeader,
 	CardTitle,
 	CardContent,
+	CardDescription,
 } from '@/components/ui/card';
 import { Button } from '../ui/button';
 import { Textarea } from '../ui/textarea';
@@ -30,6 +31,9 @@ export default function Chat() {
 		<Card className='col-span-2 row-span-12 col-start-2 flex flex-col'>
 			<CardHeader>
 				<CardTitle>Chat</CardTitle>
+				<CardDescription>
+					Aprende inglés hablando en cualquier escenario{' '}
+				</CardDescription>
 			</CardHeader>
 			<CardContent className='h-full flex flex-col'>
 				<div className='h-full overflow-y-scroll border p-2 rounded-lg bg-gray-100 mb-5'>

@@ -10,7 +10,13 @@ const perplexity = new OpenAI({
 
 export async function POST(req: Request) {
 	// Extract the `messages` from the body of the request
-	const { messages } = await req.json();
+	let { messages } = await req.json();
+
+	if (messages.length === 1) {
+		messages[0].content =
+			'charla conmigo como si fuera mi mejor profesor de ingles y estuvieramos practicando un dialogo, dame consejos de mejoras o correciones que detectes \n  ' +
+			messages[0].content;
+	}
 
 	// Ask Perplexity for a streaming chat completion using PPLX 70B online model
 	// @see https://blog.perplexity.ai/blog/introducing-pplx-online-llms
