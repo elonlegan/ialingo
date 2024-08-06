@@ -6,22 +6,44 @@ import {
 	CardTitle,
 	CardDescription,
 	CardContent,
-	CardFooter,
 } from '@/components/ui/card';
 import { Textarea } from '@/components/ui/textarea';
 import { useState } from 'react';
 import ClickToCopy from '@/components/clickToCopy/clickToCopy';
+import { useToast } from '../ui/use-toast';
+import axios from 'axios';
+import { useDebouncedCallback } from 'use-debounce';
 
 export default function Translate() {
+	const { toast } = useToast();
+
 	const [translatedText, setTranslatedText] = useState('');
 
-	const handleTranslate = (textForTranslate: string) => {
-		const translated = textForTranslate
-			.split('')
-			.reverse()
-			.join('');
-		setTranslatedText(translated);
-	};
+	const handleTranslate = useDebouncedCallback(
+		async (textForTranslate: string) => {
+			if (!textForTranslate) {
+				setTranslatedText('');
+				return;
+			}
+			setTranslatedText('cargando...');
+			try {
+				const response = await axios.post(
+					'/api/translate',
+					{
+						textForTranslate,
+					}
+				);
+				setTranslatedText(response.data.translatedText);
+			} catch (error) {
+				console.error('Error translating text:', error);
+				toast({
+					title: 'Error translating text',
+					variant: 'destructive',
+				});
+			}
+		},
+		300
+	);
 
 	return (
 		<main>
