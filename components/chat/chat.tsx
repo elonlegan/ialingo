@@ -30,7 +30,7 @@ export default function Chat() {
 		}
 	};
 
-	const enterListener = (e) => {
+	const enterListener = (e: any) => {
 		if (e.key === 'Enter') {
 			handleSendMessage();
 		}
