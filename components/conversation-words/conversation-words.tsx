@@ -9,7 +9,7 @@ import {
 import { Button } from '@/components/ui/button';
 import { Textarea } from '@/components/ui/textarea';
 import { Badge } from '@/components/ui/badge';
-import ClickToCopy from '../cllickToCopy/clickToCopy';
+import ClickToCopy from '../clickToCopy/clickToCopy';
 
 const conversationWords = [
 	'Hello',
@@ -57,7 +57,7 @@ export default function ConversationWords() {
 			</CardHeader>
 			<CardContent className='overflow-y-auto h-full'>
 				{conversationWords.map((word, index) => (
-					<ClickToCopy key={index + word}>
+					<ClickToCopy key={index + word} value={word}>
 						<Badge>{word}</Badge>
 					</ClickToCopy>
 				))}

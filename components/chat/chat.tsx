@@ -9,6 +9,7 @@ import {
 import { Button } from '../ui/button';
 import { Textarea } from '../ui/textarea';
 import { useState } from 'react';
+import ClickToCopy from '@/components/clickToCopy/clickToCopy';
 
 export default function Chat() {
 	const [messages, setMessages] = useState([]);
@@ -48,19 +49,21 @@ export default function Chat() {
 										: 'left',
 							}}
 						>
-							<div
-								style={{
-									display: 'inline-block',
-									padding: '10px',
-									borderRadius: '8px',
-									backgroundColor:
-										message.sender === 'user'
-											? '#daf4fa'
-											: '#f1f1f1',
-								}}
-							>
-								{message.text}
-							</div>
+							<ClickToCopy value={message.text}>
+								<div
+									style={{
+										display: 'inline-block',
+										padding: '10px',
+										borderRadius: '8px',
+										backgroundColor:
+											message.sender === 'user'
+												? '#daf4fa'
+												: '#f1f1f1',
+									}}
+								>
+									{message.text}
+								</div>
+							</ClickToCopy>
 						</div>
 					))}
 				</div>

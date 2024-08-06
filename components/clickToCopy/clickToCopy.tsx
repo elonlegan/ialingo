@@ -5,11 +5,17 @@ import {
 	TooltipTrigger,
 } from '@/components/ui/tooltip';
 
-export default function ClickToCopy({ children }) {
+export default function ClickToCopy({ children, value }) {
 	return (
 		<TooltipProvider>
 			<Tooltip>
-				<TooltipTrigger>{children}</TooltipTrigger>
+				<TooltipTrigger
+					onClick={() => {
+						navigator.clipboard.writeText(value);
+					}}
+				>
+					{children}
+				</TooltipTrigger>
 				<TooltipContent>
 					<p>Click para copiar</p>
 				</TooltipContent>
