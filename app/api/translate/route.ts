@@ -1,5 +1,3 @@
-// pages/api/translate.js
-
 import { getAiResponse } from '@/lib/ai-response';
 import { NextResponse } from 'next/server';
 

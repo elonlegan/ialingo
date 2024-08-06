@@ -9,17 +9,22 @@ import {
 } from '@/components/ui/card';
 import { Button } from '../ui/button';
 import { Textarea } from '../ui/textarea';
-import { useState } from 'react';
 import ClickToCopy from '@/components/clickToCopy/clickToCopy';
-import { useChat } from 'ai/react';
+import { Message, useChat } from 'ai/react';
 
-export default function Chat() {
+export default function Chat({
+	onMessage,
+}: {
+	onMessage: (message: Message) => void;
+}) {
 	const {
 		messages,
 		input,
 		handleInputChange,
 		handleSubmit,
-	} = useChat();
+	} = useChat({
+		onFinish: onMessage,
+	});
 
 	const enterListener = (e: any) => {
 		if (e.key === 'Enter') {
