@@ -36,7 +36,7 @@ export default function Chat() {
 				</CardDescription>
 			</CardHeader>
 			<CardContent className='h-full flex flex-col'>
-				<div className='h-full overflow-y-scroll border p-2 rounded-lg bg-gray-100 mb-5'>
+				<div className='h-full overflow-y-scroll border p-2 rounded-lg mb-5'>
 					{messages.map((message) => (
 						<div
 							key={message.id}
@@ -56,8 +56,8 @@ export default function Chat() {
 										borderRadius: '8px',
 										backgroundColor:
 											message.role === 'user'
-												? '#daf4fa'
-												: '#f1f1f1',
+												? '#93c5fd'
+												: '#e5e7eb',
 									}}
 								>
 									{message.content}
