@@ -5,11 +5,25 @@ import {
 	CardHeader,
 	CardTitle,
 	CardContent,
+	CardDescription,
 } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
 import { Textarea } from '@/components/ui/textarea';
 import { Badge } from '@/components/ui/badge';
 import ClickToCopy from '../clickToCopy/clickToCopy';
+
+// components/ConversationWords.tsx
+
+const colors: string[] = [
+	'bg-red-500',
+	'bg-blue-500',
+	'bg-green-500',
+	'bg-yellow-500',
+	'bg-purple-500',
+	'bg-pink-500',
+	'bg-indigo-500',
+	'bg-teal-500',
+];
 
 const conversationWords = [
 	'Hello',
@@ -58,7 +72,11 @@ export default function ConversationWords() {
 			<CardContent className='overflow-y-auto h-full'>
 				{conversationWords.map((word, index) => (
 					<ClickToCopy key={index + word} value={word}>
-						<Badge>{word}</Badge>
+						<Badge
+							className={colors[index % colors.length]}
+						>
+							{word}
+						</Badge>
 					</ClickToCopy>
 				))}
 			</CardContent>
